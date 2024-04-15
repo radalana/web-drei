@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Customers</title>
+  </head>
+  <body>
+    <!-- BEGIN (write your solution here) -->
+    <button id="sort">Sort by name</button>
+    <table>
+      <thead>
+        <tr>
+          <th>Last name</th>
+          <th>Company</th>
+          <th>Country</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for customer in customers %}
+      <tr>
+        <td>
+          {{ customer['Last Name'] }}
+      </td>
+        <td>
+            {{customer['Company']}}
+        </td>
+        <td>
+            {{customer['Country']}}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+    <!-- END -->
+    <script src="../script.js"></script>
+  </body>
+</html>
