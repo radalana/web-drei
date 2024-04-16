@@ -16,8 +16,10 @@ def customers():
     columns = [column[0] for column in cursor.description]
     customers = [dict(zip(columns, customer)) for customer in customers]
 
+    #for filter by country
+    countries = sorted(set([customer['Country'] for customer in customers]))
     conn.close()
-    return render_template('index.html', customers=customers)
+    return render_template('index.html', customers=customers, countries=countries)
 
 if __name__ == "__main__":
   app.run()

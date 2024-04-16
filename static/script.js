@@ -19,10 +19,24 @@ sortBtn.addEventListener('click', () => {
    let sortTableContent = '';
    customersData.forEach(custom => {
         const {Surname, Company, Country} = custom;
-        console.log
         const rowConstext = `<tr><td>${Surname}</td><td>${Company}</td><td>${Country}</td></tr>`;
         sortTableContent+=rowConstext;
    });
    tableBodyEl.innerHTML = sortTableContent;
    
+});
+    const selectEl = document.getElementById('filter');
+    
+selectEl.addEventListener('input', (event) => {
+    const selectedCountry = event.target.value;
+    const filteredCustomers = customersData.filter((customer) => customer.Country === selectedCountry);
+
+    const tableBodyEl = document.getElementById('list');
+    let filteredContent = '';
+    filteredCustomers.forEach(custom => {
+        const {Surname, Company, Country} = custom;
+        const rowConstext = `<tr><td>${Surname}</td><td>${Company}</td><td>${Country}</td></tr>`;
+        filteredContent+=rowConstext;
+   });
+   tableBodyEl.innerHTML = filteredContent;
 });
