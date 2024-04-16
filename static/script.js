@@ -11,43 +11,31 @@ const sortByLastName = (customers) => {
         
     });
 }
-const updateTable = (custoList) => {
+const updateTable = (customList) => {
     const tableBodyEl = document.getElementById('list');
-    let filteredContent = '';
-    filteredCustomers.forEach(custom => {
-        const {Surname, Company, Country} = custom;
-        const rowConstext = `<tr><td>${Surname}</td><td>${Company}</td><td>${Country}</td></tr>`;
-        filteredContent+=rowConstext;
+    let newContent = '';
+    customList.forEach(custom => {
+        const {id, Surname, Company, Country} = custom;
+        const rowConstext = `<tr><td>${Surname}</td><td>${Company}</td><td>${Country}</td>`;
+        //fix!!! modal after sorting and filtering!
+        const modalPieCharContext = `<td><button type="button" data-bs-toggle="modal" data-bs-target="#Modal_${id}">show pie chart</button></td></tr>`;
+        const row = rowConstext + modalPieCharContext;
+        newContent+=(row);
    });
-   tableBodyEl.innerHTML = filteredContent;
+   tableBodyEl.innerHTML = newContent;
 }
+
+
 sortBtn.addEventListener('click', () => {
     sortByLastName(customersData);
-    const rows = document.querySelectorAll('#list > tr');
-
-   const tableBodyEl = document.getElementById('list');
-   let sortTableContent = '';
-   customersData.forEach(custom => {
-        const {Surname, Company, Country} = custom;
-        const rowConstext = `<tr><td>${Surname}</td><td>${Company}</td><td>${Country}</td></tr>`;
-        sortTableContent+=rowConstext;
-   });
-   tableBodyEl.innerHTML = sortTableContent;
-   
+    updateTable(customersData);
+  
 });
-    const selectEl = document.getElementById('filter');
-    
+
+
+const selectEl = document.getElementById('filter');
 selectEl.addEventListener('input', (event) => {
     const selectedCountry = event.target.value;
     const filteredCustomers = customersData.filter((customer) => customer.Country === selectedCountry);
-    /*
-    const tableBodyEl = document.getElementById('list');
-    let filteredContent = '';
-    filteredCustomers.forEach(custom => {
-        const {Surname, Company, Country} = custom;
-        const rowConstext = `<tr><td>${Surname}</td><td>${Company}</td><td>${Country}</td></tr>`;
-        filteredContent+=rowConstext;
-   });
-   tableBodyEl.innerHTML = filteredContent;
-   */
+    updateTable(filteredCustomers);
 });

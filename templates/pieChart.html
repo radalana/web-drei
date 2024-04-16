@@ -1,5 +1,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<button type="button" data-bs-toggle="modal" data-bs-target="#Modal_{{customer['id']}}">
+  show pie chart
+ </button>
 <div class="modal fade" id="Modal_{{customer['id']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -9,7 +12,10 @@
         </div>
         <div class="modal-body">
           
-            <canvas id="canva{{ customer['id'] }}" style="width:100%;max-width:300px"></canvas>
+            <canvas id="canva1_{{ customer['id'] }}" style="width:100%;max-width:300px"></canvas>
+            <canvas id="canva2_{{ customer['id'] }}" style="width:100%;max-width:300px"></canvas>
+            <canvas id="canva3_{{ customer['id'] }}" style="width:100%;max-width:300px"></canvas>
+            
         </div>
       </div>
     </div>
@@ -20,5 +26,6 @@
     var sales2022 = "{{ customer['sales22'] }}";// for charts.js
     var companyName = "{{ customer['Company'] }}";
     var total2021 = "{{total_sales_2021}}";
+    var total2022 = "{{total_sales_2022}}";
   </script>
   <script src="{{ url_for('static', filename='charts.js') }}"></script>
