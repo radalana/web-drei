@@ -9,18 +9,16 @@
         </div>
         <div class="modal-body">
           
-            <canvas id="" data-customer-id="{{customer['id']}}"  style="width:100%;max-width:300px"></canvas>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <canvas id="canva{{ customer['id'] }}" style="width:100%;max-width:300px"></canvas>
         </div>
       </div>
     </div>
   </div>
   <script>
-    var sales2021 = "{{ customer['sales2021'] }}";
-    var sales2022 = "{{ customer['sales2022'] }}";// for charts.js
+    var id = "{{ customer['id'] }}";
+    var sales2021 = "{{ customer['sales21'] }}";
+    var sales2022 = "{{ customer['sales22'] }}";// for charts.js
     var companyName = "{{ customer['Company'] }}";
-    var total2921 = "{{total_sales_2021}}";
+    var total2021 = "{{total_sales_2021}}";
   </script>
   <script src="{{ url_for('static', filename='charts.js') }}"></script>

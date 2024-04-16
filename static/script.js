@@ -11,6 +11,16 @@ const sortByLastName = (customers) => {
         
     });
 }
+const updateTable = (custoList) => {
+    const tableBodyEl = document.getElementById('list');
+    let filteredContent = '';
+    filteredCustomers.forEach(custom => {
+        const {Surname, Company, Country} = custom;
+        const rowConstext = `<tr><td>${Surname}</td><td>${Company}</td><td>${Country}</td></tr>`;
+        filteredContent+=rowConstext;
+   });
+   tableBodyEl.innerHTML = filteredContent;
+}
 sortBtn.addEventListener('click', () => {
     sortByLastName(customersData);
     const rows = document.querySelectorAll('#list > tr');
@@ -30,7 +40,7 @@ sortBtn.addEventListener('click', () => {
 selectEl.addEventListener('input', (event) => {
     const selectedCountry = event.target.value;
     const filteredCustomers = customersData.filter((customer) => customer.Country === selectedCountry);
-
+    /*
     const tableBodyEl = document.getElementById('list');
     let filteredContent = '';
     filteredCustomers.forEach(custom => {
@@ -39,4 +49,5 @@ selectEl.addEventListener('input', (event) => {
         filteredContent+=rowConstext;
    });
    tableBodyEl.innerHTML = filteredContent;
+   */
 });

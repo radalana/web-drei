@@ -1,13 +1,21 @@
-
+var canva = document.getElementById("canva" + id);
+var ctx = canva.getContext('2d');
 var xValues = [companyName, "Others"];
-var yValues = [sales2021, total_sales_2021];
+console.log(sales2021);
+var yValues = [sales2021, total2021];
 var barColors = [
   "#b91d47",
   "#00aba9"
 ];
-const config = {
+var config = {
     type: 'pie',
-    data: data,
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
     options: {
       responsive: true,
       plugins: {
@@ -21,3 +29,4 @@ const config = {
       }
     },
   };
+new Chart(ctx, config);
