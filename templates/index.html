@@ -6,6 +6,10 @@
   <body>
     <!-- BEGIN (write your solution here) -->
     <button id="sort">Sort by name</button>
+    <label for="filter">Choose a filter:</label>
+    <select name="country" id="filter">
+      <option value="">country</option>
+    </select> 
     <table>
       <thead>
         <tr>
@@ -14,11 +18,11 @@
           <th>Country</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="list">
       {% for customer in customers %}
       <tr>
         <td>
-          {{ customer['Last Name'] }}
+          {{ customer['Surname'] }}
       </td>
         <td>
             {{customer['Company']}}
@@ -31,6 +35,10 @@
     </tbody>
   </table>
     <!-- END -->
-    <script src="../script.js"></script>
+    <script>
+      const customersData = {{ customers | tojson }};
+      console.log(customersData);
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>

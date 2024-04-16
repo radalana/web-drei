@@ -9,7 +9,7 @@ def customers():
     cursor = conn.cursor()
 
     # Получение данных из базы данных
-    cursor.execute("SELECT \"Last Name\", Company, Country FROM customers")
+    cursor.execute('SELECT "Last Name" as Surname, Company, Country FROM customers')
     customers = cursor.fetchall()
 
     # Преобразование данных в список словарей для JSON ответа
