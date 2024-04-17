@@ -27,15 +27,15 @@ def index():
     sortedCustomers = customers
     if sortBy is not None:
         sortedCustomers.sort(key=lambda x: x.get(sortBy, ''))
-    filteredByCountry = request.args.get('filterBy')
+    filterByCountry = request.args.get('filterBy')
 
-    if filteredByCountry:
-        filtered_customers = [customer for customer in sortedCustomers if customer['Country'] == filteredByCountry]
+    if filterByCountry:
+        filtered_customers = [customer for customer in sortedCustomers if customer['Country'] == filterByCountry]
     else:
         filtered_customers = sortedCustomers
 
     countries = sorted(set([customer['Country'] for customer in customers]))
-    return render_template('index.html', customers=filtered_customers, countries=countries, sorted=sortBy, filtered=filteredByCountry)
+    return render_template('index.html', customers=filtered_customers, countries=countries, sorted=sortBy, filtered=filterByCountry)
 
 
 @app.get("/customers/<id>")

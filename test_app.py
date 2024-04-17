@@ -25,3 +25,9 @@ def test_sort_by_country(client):
     data = response.get_data(as_text=True)
     assert 'Andorra' in data
 
+def test_filter_by_country(client):
+    response = client.get(url_for('index', filterBy='Austria'))
+    assert response.status_code == 200
+   
+    data = response.get_data(as_text=True)
+    assert 'Austria' in data
