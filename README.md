@@ -3,7 +3,7 @@
 web skill test Drei Österreich 2024 
 
 ### Description
-SalesTrendVisualizer is a web-based application designed to interactively manage and display customer sales data. It uses a SQLite database to store customer information and sales figures for 2021 and 2022. The application provides dynamic sorting, filtering, and visual presentation of sales data through pie charts and line graphs, enabling users to effectively analyze sales trends and customer engagement.
+Customers Dashboard App is a web-based application designed to interactively manage and display customer sales data. It uses a SQLite database to store customer information and sales figures for 2021 and 2022. The application provides dynamic sorting, filtering, and visual presentation of sales data through pie charts and line graphs, enabling users to effectively analyze sales trends and customer engagement.
 
 ### Preview
 ![Screenshot of Customer Sales Application interface showing a detailed view of a selected customer. The left side of the screen lists customer attributes such as Name, Surname, Company, Country, City, sales figures for 2021 and 2022, contact numbers, email, subscription date, and website. The right side displays two pie charts: the first showing the sales distribution for 2021 and the second for 2022, with the selected company's sales highlighted against others.](company_view.png)
