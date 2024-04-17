@@ -68,11 +68,5 @@
       {% endfor %}
     </tbody>
   </table>
-    <!-- END -->
-    <script>
-      const customersData = {{ customers | tojson }};
-    </script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-    
   </body>
 </html>
