@@ -23,14 +23,6 @@ const updateTable = (customList) => {
    tableBodyEl.innerHTML = newContent;
 }
 
-/*
-sortBtn.addEventListener('click', () => {
-    sortByCompanyName(customersData);
-    updateTable(customersData);
-  
-});
-*/
-
 const selectEl = document.getElementById('filter');
 selectEl.addEventListener('input', (event) => {
     const selectedCountry = event.target.value;
