@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 import pandas as pd
 import sqlite3
 
@@ -17,17 +17,19 @@ def get_customers_data():
 
 app = Flask(__name__)
 customers = get_customers_data()
+@app.route('/')
+def home():
+    return redirect('/customers/')
 
-@app.get("/customers")
+@app.get("/customers/")
 def index():
+    sortBy = request.args.get('sortBy')
+    sortedCustomers = customers
+    if sortBy is not None:
+        sortedCustomers.sort(key=lambda x: x.get(sortBy, ''))
     #for filter by country
     countries = sorted(set([customer['Country'] for customer in customers]))
-
-
-
-    
-    
-    return render_template('index.html', customers=customers, countries=countries)
+    return render_template('index.html', customers=sortedCustomers, countries=countries, sorted=sortBy)
 
 
 @app.get("/customers/<id>")
