@@ -7,7 +7,7 @@ def get_customers_data():
   cursor = conn.cursor()
 
     #LIMIT 100 for tests! delete!!!
-  cursor.execute('SELECT "Customer id" as id, "First Name" as Name, "Last Name" as Surname, Company, Country, City, "SALES 2021" as sales21, "Sales 2022" as sales22, "Phone 1", "Phone 2", Email, "Subscriprion Date", Website FROM customers LIMIT 50')
+  cursor.execute('SELECT "Customer id" as id, "First Name" as Name, "Last Name" as Surname, Company, Country, City, "SALES 2021" as sales21, "Sales 2022" as sales22, "Phone 1", "Phone 2", Email, "Subscriprion Date", Website FROM customers LIMIT 500')
   customers = cursor.fetchall()
     
   conn.close()
@@ -27,9 +27,15 @@ def index():
     sortedCustomers = customers
     if sortBy is not None:
         sortedCustomers.sort(key=lambda x: x.get(sortBy, ''))
-    #for filter by country
+    filteredByCountry = request.args.get('filterBy')
+
+    if filteredByCountry:
+        filtered_customers = [customer for customer in sortedCustomers if customer['Country'] == filteredByCountry]
+    else:
+        filtered_customers = sortedCustomers
+
     countries = sorted(set([customer['Country'] for customer in customers]))
-    return render_template('index.html', customers=sortedCustomers, countries=countries, sorted=sortBy)
+    return render_template('index.html', customers=filtered_customers, countries=countries, sorted=sortBy, filtered=filteredByCountry)
 
 
 @app.get("/customers/<id>")

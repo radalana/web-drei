@@ -27,18 +27,23 @@
                   sort by company
                 </label>
               </div>
-              <button type="submit" class="btn btn-secondary">Sort</button>
+            </div>
+              
+              <div class="col-4">
+                <select name="filterBy" id="filter" class="form-select">
+                  <option value="" {% if filtered is none %}selected{% endif %}>Choose the country</option>
+                  {% for country in countries %}
+                  <option value="{{ country }}" {% if filtered == country %}selected{% endif %}>{{ country }}</option>
+                  {% endfor %}
+              </select>
+              
+              </div>
+              <div>
+                <button type="submit" class="btn btn-secondary">Apply</button>
+              </div>
             </form>
-        </div>
-        <div class="col-4">
-          <label for="filter" class="form-label">Filter by country:</label>
-          <select name="filter" id="filter" class="form-select">
-            <option selected>Choose the country</option>
-            {% for country in countries %}
-            <option value="{{country}}">{{ country }}</option>
-            {% endfor %}
-          </select> 
-        </div>
+        
+        
        
       </div>
     </div>

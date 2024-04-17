@@ -23,9 +23,11 @@ const updateTable = (customList) => {
    tableBodyEl.innerHTML = newContent;
 }
 
+/*
 const selectEl = document.getElementById('filter');
 selectEl.addEventListener('input', (event) => {
     const selectedCountry = event.target.value;
     const filteredCustomers = customersData.filter((customer) => customer.Country === selectedCountry);
     updateTable(filteredCustomers);
 });
+*/
