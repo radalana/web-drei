@@ -7,7 +7,7 @@ def get_customers_data():
   cursor = conn.cursor()
 
     #LIMIT 100 for tests! delete!!!
-  cursor.execute('SELECT "Customer id" as id, "First Name" as Name, "Last Name" as Surname, Company, Country, City, "SALES 2021" as sales21, "Sales 2022" as sales22, "Phone 1", "Phone 2", Email, "Subscriprion Date", Website FROM customers LIMIT 500')
+  cursor.execute('SELECT "Customer id" as id, "First Name" as Name, "Last Name" as Surname, Company, Country, City, "SALES 2021" as sales21, "Sales 2022" as sales22, "Phone 1", "Phone 2", Email, "Subscriprion Date", Website FROM customers')
   customers = cursor.fetchall()
     
   conn.close()
